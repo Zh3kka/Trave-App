@@ -4,9 +4,8 @@ import HomeScreen from "./screens/HomeScreen";
 import WelcomeScreen from "./screens/WelcomeScreen";
 import { screenOptions } from "../constants/index";
 
-export { ErrorBoundary } from "expo-router";
-
 const Stack = createNativeStackNavigator();
+
 export default function RootLayout() {
   return <RootLayoutNav />;
 }

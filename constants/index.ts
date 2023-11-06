@@ -38,9 +38,9 @@ export const categoriesData = [
 export const destinationData = [
     {
         title: 'Osaka Castle',
-        duration: '12 Days',
-        distance: '400 KM',
-        weather: '20 C',
+        duration: 12,
+        distance: 400,
+        weather: 20,
         price: 1200,
         shortDescription: "Osaka Castle is a Japanese castle in Chūō-ku, Osaka, Japan. The castle is one of Japan's most famous landmarks.",
         longDescription: "Osaka Castle is a Japanese castle in Chūō-ku, Osaka, Japan. The castle is one of Japan's most famous landmarks and it played a major role in the unification of Japan during the sixteenth century of the Azuchi-Momoyama period.",
