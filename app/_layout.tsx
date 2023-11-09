@@ -1,13 +1,14 @@
-import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import HomeScreen from "./screens/HomeScreen";
-import WelcomeScreen from "./screens/WelcomeScreen";
-import { screenOptions } from "../constants/index";
+import { NavigationContainer } from '@react-navigation/native'
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import HomeScreen from './screens/HomeScreen'
+import WelcomeScreen from './screens/WelcomeScreen'
+import { screenOptions } from '../constants/index'
+import DestinationScreen from './screens/DestinationScreen'
 
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator()
 
 export default function RootLayout() {
-  return <RootLayoutNav />;
+  return <RootLayoutNav />
 }
 
 function RootLayoutNav() {
@@ -24,7 +25,12 @@ function RootLayoutNav() {
           component={HomeScreen}
           options={screenOptions}
         />
+        <Stack.Screen
+          name="Destination"
+          component={DestinationScreen}
+          options={screenOptions}
+        />
       </Stack.Navigator>
     </NavigationContainer>
-  );
+  )
 }

@@ -1,34 +1,33 @@
-import { StyleSheet, Text, View } from "react-native";
-import {
-  widthPercentageToDP as wp,
-  heightPercentageToDP as hp,
-} from "react-native-responsive-screen";
-import React from "react";
-import { destinationData } from "../constants";
-import { DestinationCard } from "./DestinationCard";
+import { FlatList, StyleSheet, Text, View } from 'react-native'
+import React from 'react'
+import { destinationData } from '../constants'
+import { DestinationCard } from './DestinationCard'
+import { useNavigation } from 'expo-router'
 
-export const Destinations = () => {
+export const Destinations = ({ navigation }: { navigation: any }) => {
+  const renderItem = ({ item }: any) => (
+    <DestinationCard
+      key={item.title}
+      title={item.title}
+      shortDescription={item.shortDescription}
+      imageUrl={item.image}
+      onPress={() => {
+        navigation.navigate('Destination' as never, { ...item })
+      }}
+    />
+  )
   return (
-    <View style={styles.container}>
-      {destinationData.map((item, index) => {
-        return (
-          <DestinationCard
-            key={index}
-            title={item.title}
-            shortDescription={item.shortDescription}
-            imageUrl={item.image}
-          />
-        );
-      })}
+    <View>
+      <FlatList
+        data={destinationData}
+        showsVerticalScrollIndicator={false}
+        horizontal={false}
+        numColumns={2}
+        renderItem={renderItem}
+        contentContainerStyle={{
+          alignItems: 'center',
+        }}
+      />
     </View>
-  );
-};
-
-const styles = StyleSheet.create({
-  container: {
-    marginHorizontal: 16,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    flexWrap: "wrap",
-  },
-});
+  )
+}

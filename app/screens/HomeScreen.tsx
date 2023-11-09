@@ -1,5 +1,4 @@
 import {
-  SafeAreaView,
   Image,
   View,
   Text,
@@ -8,32 +7,31 @@ import {
   StyleSheet,
   Platform,
   TextInput,
-} from "react-native";
+} from 'react-native'
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
-} from "react-native-responsive-screen";
-import React from "react";
-import { useNavigation } from "expo-router";
-import { MagnifyingGlassIcon } from "react-native-heroicons/outline";
-import { Categories } from "../../components/categories";
-import { SortCategories } from "../../components/sortCategories";
-import { Destinations } from "../../components/destinations";
-const ios = Platform.OS === "ios";
-const topMargin = ios ? { marginTop: 16 } : { marginTop: 40 };
+} from 'react-native-responsive-screen'
+import React from 'react'
+import { MagnifyingGlassIcon } from 'react-native-heroicons/outline'
+import { Categories } from '../../components/categories'
+import { SortCategories } from '../../components/sortCategories'
+import { Destinations } from '../../components/destinations'
+import { SafeAreaView } from 'react-native-safe-area-context'
+const ios = Platform.OS === 'ios'
+const topMargin = ios ? { marginTop: 16 } : { marginTop: 40 }
 
-export default function HomeScreen() {
-  const navigation = useNavigation();
+export default function HomeScreen({ navigation }: { navigation: any }) {
   return (
-    <SafeAreaView>
+    <SafeAreaView edges={['top']}>
       <ScrollView showsVerticalScrollIndicator={false} style={topMargin}>
         <View style={styles.avatarContainer}>
-          <Text style={{ fontWeight: "bold", fontSize: wp(7) }}>
+          <Text style={{ fontWeight: 'bold', fontSize: wp(7) }}>
             Let's Discover
           </Text>
           <TouchableOpacity>
             <Image
-              source={require("../../assets/images/avatar.png")}
+              source={require('../../assets/images/avatar.png')}
               style={{ height: wp(12), width: wp(12) }}
             />
           </TouchableOpacity>
@@ -43,7 +41,7 @@ export default function HomeScreen() {
             <MagnifyingGlassIcon size={20} strokeWidth={3} color="gray" />
             <TextInput
               placeholder="Search destination"
-              placeholderTextColor={"gray"}
+              placeholderTextColor={'gray'}
               style={styles.searchBar}
             />
           </View>
@@ -55,32 +53,29 @@ export default function HomeScreen() {
           <SortCategories />
         </View>
         <View style={{ marginBottom: 16 }}>
-          <Destinations />
+          <Destinations navigation={navigation} />
         </View>
       </ScrollView>
-      <TouchableOpacity onPress={() => navigation.navigate("Welcome" as never)}>
-        <Text>На главную</Text>
-      </TouchableOpacity>
     </SafeAreaView>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
   avatarContainer: {
     marginHorizontal: 20,
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    marginBottom: 40,
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 16,
   },
   searchBarContainer: {
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "center",
-    backgroundColor: "rgb(229,229,229)",
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: 'rgb(229,229,229)',
     borderRadius: 100,
-    padding: 16,
+    padding: 10,
     paddingLeft: 24,
     marginHorizontal: 8,
   },
@@ -91,4 +86,4 @@ const styles = StyleSheet.create({
     marginBottom: 4,
     paddingLeft: 10,
   },
-});
+})
